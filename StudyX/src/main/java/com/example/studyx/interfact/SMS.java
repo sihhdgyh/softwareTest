@@ -8,8 +8,8 @@ public class SMS {
     private SMSCodeService smsCodeService;
 
 
-    public String sendCodeToSMS(String tel){
-        return smsCodeService.sendCodeToSMS(tel);
+    public String sendCodeToSMS(String mail){
+        return smsCodeService.sendCodeToSMS(mail);
     }
     public boolean send(String content,String mail,String subject){
         return smsCodeService.send(content,mail,subject);
