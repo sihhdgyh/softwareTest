@@ -15,19 +15,27 @@ public class UserService {
     UserDAO userDAO;
 
     public boolean isExist(String mail) {
-        User user = userDAO.findByMail(mail);
+        User user = getByMail(mail);
         return null!=user;
     }
 
+    public User getByName(String username) {
+        return userDAO.findByUsername(username);
+    }
+    public User getByPhone(String phone) {
+        return userDAO.findByPhone(phone);
+    }
+    public User getByMail(String mail) {
+        return userDAO.findByMail(mail);
+    }
 
+    public User get(String mail, String password){
+        return userDAO.getByMailAndPassword(mail, password);
+    }
 
-//    public User get(String mail, String password){
-//        return userDAO.getByMailAndPassword(mail, password);
-//    }
-
-//    public void add(User user) {
-//        userDAO.save(user);
-//    }
+    public void add(User user) {
+        userDAO.save(user);
+    }
 
     public int register(User user) {
         String mail = user.getMail();
@@ -72,7 +80,7 @@ public class UserService {
         if (!exist) {
             return 2;
         }
-        User user1=userDAO.findByMail(mail);;
+        User user1=getByMail(mail);
         user.setId(user1.getId());
         // 默认生成 16 位盐，干扰数据
         String salt = new SecureRandomNumberGenerator().nextBytes().toString();
@@ -82,5 +90,8 @@ public class UserService {
         user.setPassword(encodedPassword);
         userDAO.save(user);
         return 1;
+    }
+    public User findByUsername(String username) {
+        return userDAO.findByUsername(username);
     }
 }

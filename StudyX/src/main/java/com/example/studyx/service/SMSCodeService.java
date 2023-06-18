@@ -28,19 +28,36 @@ public class SMSCodeService {
     private JavaMailSender mailSender;
 
     @CachePut(value="smsCode",key="#tel")
-    public String sendCodeToSMS(String tel){
+    public String getCodeToSMS(String tel){
         String code = codeUtils.generator(tel);
         return code;
     }
-    public boolean send(String content,String mail,String subject) {
+    public boolean send(String code,String mail) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("2083978036@qq.com");
         message.setTo(mail);
-        message.setSubject(subject);
-        message.setText(content);
+        message.setSubject("it is a test for spring boot");
+        message.setText("你好，验证码为："+code);
         try {
             mailSender.send(message);
-            logger.info("邮件已发送。");
+            logger.info("小黄的测试邮件已发送。");
+            return true;
+
+        } catch (Exception e) {
+            logger.error("小黄发送邮件时发生异常了！", e);
+            return false;
+        }
+    }
+
+    public boolean send_reply(String reply,String mail) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("2083978036@qq.com");
+        message.setTo(mail);
+        message.setSubject("您的反馈答复");
+        message.setText(reply);
+        try {
+            mailSender.send(message);
+            logger.info("答复邮件已发送。");
             return true;
 
         } catch (Exception e) {
@@ -49,3 +66,4 @@ public class SMSCodeService {
         }
     }
 }
+

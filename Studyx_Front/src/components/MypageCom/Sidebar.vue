@@ -5,16 +5,14 @@
         <a href="/user/myinfo" class="box">
           <span><i class="el-icon-edit"></i></span><span>个人信息</span>
         </a>
-        <a href="/user/mycollection" class="box">
-          <span><i class="el-icon-share"></i></span><span>我的收藏</span></a
-        >
+       
         <a href="/user/myborrow" class="box">
           <span><i class="el-icon-user"></i></span><span>我的借阅</span></a
         >
-        <a href="/user/mydonation" class="box">
+        <!-- <a href="/user/mydonation" class="box">
           <span><i class="el-icon-remove-outline"></i></span
           ><span>我的捐赠</span></a
-        >
+        > -->
       </div>
     </el-col>
   </div>

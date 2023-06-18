@@ -30,8 +30,6 @@
         <div class="d" style="--i: 4; --w: 1.7"></div>
         <div class="e" style="--i: 1"></div>
       </div>
-      <!-- 设置二维码 -->
-      <div class="f"></div>
     </div>
     <!-- 修改个人信息按钮 -->
     <TDButton @click.native="dialogFormVisible = true"></TDButton>
@@ -57,7 +55,7 @@
         </svg>
       </div>
     </div>
-    <div id="share"><Share></Share></div>
+    <!-- <div id="share"><Share></Share></div> -->
   </div>
 </template>
 
@@ -73,7 +71,7 @@ export default {
     return {
       dialogFormVisible: false,
       formLabelWidth: "120px",
-      username: "user",
+      username: "",
       gender: "",
       mail: "",
       school: "",
@@ -82,6 +80,7 @@ export default {
       age: "",
       integration: "",
       status: "",
+      nowuserid:"",
     };
   },
   mounted() {
@@ -90,6 +89,7 @@ export default {
   methods: {
     getlist() {
       var _this = this;
+      //alert(_this.$myglobal.nowuserid)
       //this.username = this.$myglobal.nowuserid; //当前用户
       this.$axios({
         url: "/user/getuserinfo",

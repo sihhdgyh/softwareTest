@@ -16,7 +16,7 @@
         <el-card style="width: 135px;margin-bottom: 20px;height: 233px;float: left;margin-right: 15px" class="book"
                  bodyStyle="padding:10px" shadow="hover">
           <div class="cover">
-            <img :src="item.cover" alt="封面">
+            <img src="https://tse3-mm.cn.bing.net/th/id/OIP-C.UDI1sqK-3V1aV6HB7aUKeQHaGf?w=192&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" alt="封面">
           </div>
           <div class="info">
             <div class="title" v-on:click="goDetail(item)">
@@ -47,6 +47,7 @@ export default {
   components: {SearchBar, ViewSwitch},
   data () {
     return {
+      temcover:"https://zjjjjjj_----zjjj.gitee.io/javaee/image/cover.png",
       books: [],
       currentPage: 1,
       pagesize: 18
@@ -57,13 +58,14 @@ export default {
   },
   methods: {
     loadBooks () {
+      this.$message.warning("正在加载");
       var _this = this
       this.$axios
           .get('/books')
           .then(resp => {
         if (resp && resp.data.code === 200) {
           _this.books = resp.data.result
-          this.$message.error("共"+_this.books.length+"条");
+          this.$message.success("共"+_this.books.length+"条");
         }
       })
           .catch(failResponse => {
@@ -91,7 +93,7 @@ export default {
     },
     goDetail(item) {
 
-      this.$router.push({path:'/bookparticulars',query: {id:item.bookname}})
+      this.$router.push({path:'/project/allproject',query: {id:item.bookname}})
 
     }
   }

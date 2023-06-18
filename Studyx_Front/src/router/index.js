@@ -19,8 +19,6 @@ import AdminCategory from "@/pages/Admin/AdminCategory"
 //这里是用户模块
 import Mypage from '@/pages/Mypage/Mypage'
 import Myborrow from '@/pages/Mypage/Myborrow'
-import Mydonation from '@/pages/Mypage/Mydonation'
-import Mycollection from '@/pages/Mypage/Mycollection'
 import Myinfo from '@/pages/Mypage/Myinfo'
 
 //这里是项目模块
@@ -30,10 +28,7 @@ import ProjectAll from '@/pages/Project/ProjectAll'
 //这里是书籍管理模块
 import BookDisplay from '@/pages/Book/BookDisplay'
 import BookParticulars from '@/pages/Book/BookParticulars'
-import DataTest from '@/pages/Book/DataTest'
-import test from '@/pages/Book/test'
-import testDisplay from '@/pages/Book/testDisplay'
-//import library from '@/pages/Book/library'
+
 
 //这里是总体书籍模块
 import BookAll from '@/pages/BookAll/bookall'
@@ -102,14 +97,6 @@ export default new Router({
           path: '/user/myborrow',
           component: Myborrow,
         },
-        {
-          path: '/user/mydonation',
-          component: Mydonation,
-        },
-        {
-          path: '/user/mycollection',
-          component: Mycollection,
-        },
       ],
       props: true
     },
@@ -127,11 +114,8 @@ export default new Router({
       children: [{
         path: '/project/allproject',
         component: ProjectAll,
-      }, ],
-      props: true
-
-    },
-    //书籍界面
+      }, 
+                 //书籍界面
     //书籍分类展示
     {
       path: '/book',
@@ -143,29 +127,16 @@ export default new Router({
         component: BookParticulars,
       }, ],
       props: true
+    },],
+      props: true
+
     },
+   
     //书籍详情
     {
       path: '/bookparticulars',
       name: 'BookParticulars',
       component: BookParticulars,
     },
-    //书籍前后端测试
-    {
-      path: '/test',
-      name: 'test',
-      component: test,
-    },
-    //书籍显示测试
-    {
-      path: '/testdis',
-      name: 'testDisplay',
-      component: testDisplay,
-    },
-    // {
-    //   path: '/library',
-    //   name: 'library',
-    //   component: library,
-    // },
   ]
 })
