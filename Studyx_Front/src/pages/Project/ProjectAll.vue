@@ -317,7 +317,7 @@ export default {
             userid:  _this.$myglobal.nowuserid,//需要连上接口判断
             isbn: _this.isbn,
             remarktime:this.Date(),
-            remarkid:'0',//等待自增
+            // remarkid:0,//等待自增
           })
           .then(successResponse => {
             if (successResponse.data.code === 200) {
@@ -330,7 +330,7 @@ export default {
             }
           })
           .catch(failResponse => {
-            this.$message.error("发布失败！222");
+            this.$message.error("发布失败!");
           })
     },
     Date(){

@@ -19,7 +19,9 @@ public class RemarkService {
 
     public List<Remark> list(String isbn) {
         //Sort sort = new Sort(Sort.Direction.DESC, "isbn");
-        return remarkDAO.findByIsbn(isbn);
+        List<Remark> result=remarkDAO.findByIsbn(isbn);
+        System.out.println(result);
+        return result;
     }
 
     public void addOrUpdate(Remark book) {

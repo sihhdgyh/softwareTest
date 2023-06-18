@@ -28,12 +28,14 @@ public class RemarkController {
     @CrossOrigin
     @GetMapping("/api/remarks")
     public Result listBooks(@RequestParam String isbn) {
+        System.out.println(isbn);
         return ResultFactory.buildSuccessResult(remarkService.list(isbn));
     }
 
     @CrossOrigin
     @PostMapping("/api/addremarks")
     public Result addOrUpdate(@RequestBody Remark remark) throws Exception {
+        System.out.println(remark.toString());
         remarkService.addOrUpdate(remark);
         return new Result(200,"评论显示成功",remark);
     }

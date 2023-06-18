@@ -13,6 +13,7 @@ import javax.persistence.*;
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 public class Remark {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "remarkid")
     Integer remarkid;
 
