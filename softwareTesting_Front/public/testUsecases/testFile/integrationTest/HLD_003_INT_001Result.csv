@@ -1,0 +1,6 @@
+item,no,code,mail,expected_result,actual,result
+IT_TD_002_001,1,null,2083978036@qq.com,false,false,yes
+IT_TD_002_001,2,235003,null,false,false,yes
+IT_TD_002_002,1,2344,2083978036@qq.com,false,false,yes
+IT_TD_002_003,1,235003,208397,false,false,yes
+IT_TD_002_004,1,235003,2083978036@qq.com,true,true,yes
