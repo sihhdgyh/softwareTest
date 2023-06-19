@@ -23,8 +23,8 @@ public class SMSCodeTest {
     public String getCodeToSMSTest(){
         //第一步：先获取csv文件的路径，通过BufferedReader类去读该路径中的文件
         String current=new File("").getAbsolutePath();
-        String csvFilePath = current +"\\testFile\\origin\\getCodeToSMS.csv";
-        String csvfile = current +"\\testFile\\result\\getCodeToSMSResult.csv";
+        String csvFilePath = current +"\\testFile\\unitTest\\getCodeToSMS.csv";
+        String csvfile = current +"\\testFile\\unitTest\\getCodeToSMSResult.csv";
         String headDataStr="";
         List<String> dataList = new ArrayList<>();
         if(new File(csvFilePath).exists()){
