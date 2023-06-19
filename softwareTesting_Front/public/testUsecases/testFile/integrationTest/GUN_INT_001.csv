@@ -1,0 +1,4 @@
+﻿item,no,mail,password,expected,actual,result
+IT_TD_003_001,1,2083978036@qq.com,123456,成功,,
+IT_TD_003_001,2,2083978036@qq.com,123,账号或密码错误,,
+IT_TD_003_001,3,1@qq.com,123,账号或密码错误,,
