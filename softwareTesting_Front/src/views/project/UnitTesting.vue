@@ -31,28 +31,6 @@ const tabs = [
     testCase: '使用强一般等价类设计测试用例。'
   }
 ]
-
-onMounted(() => {
-  // 嵌入stackblitz项目
-  const stackblitz = document.getElementById('stackblitz')
-
-  sdk.embedProjectId(
-    stackblitz as HTMLElement,
-    'vitest-dev-vitest-tz744h',
-    {
-      forceEmbedLayout: true,
-      openFile: 'README.md',
-      view: 'preview',
-      height: '99.5%',
-      width: '100%',
-      //initialPath: '/__vitest__',
-    }
-  )
-    .then(() => {
-      const iframe = document.getElementById('stackblitz')
-      iframe?.setAttribute('style', 'border: none;border: 1px solid #eee;')
-    })
-})
 </script>
 
 <template>

@@ -11,28 +11,6 @@ const tabs = [
   }
 ]
 
-onMounted(() => {
-  // 嵌入stackblitz项目
-  const stackblitz = document.getElementById('stackblitz')
-
-  sdk.embedProjectId(
-    stackblitz as HTMLElement,
-    'vitest-dev-vitest-sahho6',
-    {
-      forceEmbedLayout: true,
-      openFile: 'README.md',
-      view: 'editor',
-      height: '99.5%',
-      width: '100%',
-      theme: 'light',
-      //initialPath: '/__vitest__',
-    }
-  )
-    .then(() => {
-      const iframe = document.getElementById('stackblitz')
-      iframe?.setAttribute('style', 'border: none;border: 1px solid #eee;')
-    })
-})
 </script>
 
 <template>
