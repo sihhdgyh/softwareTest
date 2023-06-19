@@ -7,7 +7,9 @@ import com.example.studyx.pojo.User;
 import com.example.studyx.service.AdminService;
 import com.example.studyx.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class LoginRegister {
     @Autowired
     UserService userService;
@@ -21,37 +23,17 @@ public class LoginRegister {
     @Autowired
     UserDAO userDAO;
 
-    Admin findByAdminname(String adminname){
+    public Admin findByAdminname(String adminname){
         return adminDAO.findByAdminname(adminname);
     }
 
-    Admin getByAdminnameAndPassword(String adminname,String password){
+    public Admin getByAdminnameAndPassword(String adminname,String password){
         return adminDAO.getByAdminnameAndPassword(adminname,password);
     }
 
-    User findByUsername(String username){
-        return userDAO.findByUsername(username);
-    }
-    User findByPhone(String phone){
-        return userDAO.findByPhone(phone);
-    }
-    User getById(Integer id){
-        return userDAO.getById(id);
-    }
-    User findByMail(String mail){
+    public User findByMail(String mail){
         return userDAO.findByMail(mail);
     }
-    User getByUsernameAndPassword(String username,String password){
-        return userDAO.getByUsernameAndPassword(username,password);
-    }
-    User getByMailAndPassword(String mail,String password){
-        return userDAO.getByMailAndPassword(mail,password);
-    }
-
-    public boolean isExist_user(String mail) {
-        return userService.isExist(mail);
-    }
-
 
     public int register(User user) {
         return userService.register(user);
@@ -60,12 +42,9 @@ public class LoginRegister {
         return userService.findpassword(user);
     }
 
-
-    public boolean isExist_admin(String adminname) {
-        return adminService.isExist(adminname);
+    public User get(String mail,String password) {
+        return userService.get(mail,password);
     }
-
-
     public int register(Admin admin) {
         return adminService.register(admin);
     }

@@ -1,0 +1,4 @@
+item,no,isbn,expected_result
+UT_TC_002_002_001,1,,null
+UT_TC_002_002_002,1,1234567890111,null
+UT_TC_002_002_003,1,9789888663576,Category(isbn=9789888663576  bookname=走出原生家庭的代际创伤  publisher=null  author=金尚  publishdate=null  url=https://bkimg.cdn.bcebos.com/pic/e1fe9925bc315c601e2d30818eb1cb1349547727?x-bce-process=image/resize m_lfit w_536 limit_1  type=心理学  bookabstract=本书是国内第一本研究代际创伤的专著，对代际创伤的概念、原因、表征、影响、内容、疗法等，都有着极为详细的论述。尤其是在疗法方面，分别从一般步骤、内在小孩、身心灵、内在关系模式四个方面进行了全息式论述。书中列举的各个部分的疗法，实用性强、操作性强，是受创伤者直接可以使用的干货，其中很多方法都是经过作者实践检验过的确实有效的疗愈之法。  label=null  price=null  mark=8.2)

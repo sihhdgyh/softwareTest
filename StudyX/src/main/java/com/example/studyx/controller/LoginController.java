@@ -1,6 +1,7 @@
 package com.example.studyx.controller;
 
 import com.example.studyx.dao.UserDAO;
+import com.example.studyx.interfact.LoginRegister;
 import com.example.studyx.pojo.Admin;
 import com.example.studyx.pojo.User;
 import com.example.studyx.result.Result;
@@ -24,14 +25,15 @@ public class
 
 LoginController {
     @Autowired
-    UserService userService;
+    LoginRegister loginRegister;
     /*@Autowired
     HttpServletRequest request;   //首先可以通过注解的方式  获取一个 request*/
 
     @CrossOrigin
     @PostMapping("/api/getuserid")
     public Integer getUserid(@RequestBody String a) throws Exception {
-        User user = userService.getByMail(a);
+
+        User user = loginRegister.findByMail(a);
         Integer id = user.getId();
         return id;
     }
@@ -42,7 +44,7 @@ LoginController {
         String mail = requestUser.getMail();
         mail = HtmlUtils.htmlEscape(mail);
         //先得到salt加密的值
-        User user = userService.getByMail(mail);
+        User user = loginRegister.findByMail(mail);
         if (null == user) {
             return ResultFactory.buildFailResult("账号不存在");
         }
@@ -51,7 +53,7 @@ LoginController {
         //加密密码，和原来的做对比
         String password = new SimpleHash("md5", requestUser.getPassword(), salt, 2).toString();
         ;
-        user = userService.get(mail, password);
+        user = loginRegister.get(mail, password);
         if (null == user) {
             return ResultFactory.buildFailResult("账号或者密码错误");
         } else {
@@ -66,7 +68,7 @@ LoginController {
     @CrossOrigin
     @PostMapping(value = "/api/register")
     public Result register(@RequestBody User user) {
-        int status = userService.register(user);
+        int status = loginRegister.register(user);
         switch (status) {
             case 0:
                 return ResultFactory.buildFailResult("邮箱或密码或用户名不能为空");
@@ -81,7 +83,7 @@ LoginController {
     @CrossOrigin
     @PostMapping(value = "/api/findpassword")
     public Result findpassword(@RequestBody User user) {
-        int status = userService.findpassword(user);
+        int status = loginRegister.findpassword(user);
         switch (status) {
             case 0:
                 return ResultFactory.buildFailResult("邮箱或密码或用户名不能为空");
@@ -105,8 +107,6 @@ LoginController {
             session.removeAttribute("admin");
     }
 
-    @Autowired
-    AdminService AdminService;
 
     //管理员登录
     @CrossOrigin
@@ -115,7 +115,7 @@ LoginController {
         String adminname = requestAdmin.getAdminname();
         adminname = HtmlUtils.htmlEscape(adminname);
         //先得到salt加密的值
-        Admin admin = AdminService.getByName(adminname);
+        Admin admin = loginRegister.findByAdminname(adminname);
         if (null == admin) {
             return ResultFactory.buildFailResult("账号不存在");
         }
@@ -123,7 +123,7 @@ LoginController {
         //加密密码，和原来的做对比
         String password = new SimpleHash("md5", requestAdmin.getPassword(), salt, 2).toString();
         ;
-        admin = AdminService.get(adminname, password);
+        admin = loginRegister.getByAdminnameAndPassword(adminname, password);
         if (null == admin) {
             return ResultFactory.buildFailResult("账号不存在");
         } else {
@@ -136,7 +136,7 @@ LoginController {
     @CrossOrigin
     @PostMapping(value = "/api/register/admin")
     public Result adminregister(@RequestBody Admin admin) {
-        int status = AdminService.register(admin);
+        int status = loginRegister.register(admin);
         switch (status) {
             case 0:
                 return ResultFactory.buildFailResult("管理员名字和密码不能为空");

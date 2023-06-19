@@ -110,23 +110,8 @@ public class BookController {
 
     @CrossOrigin
     @GetMapping("/api/search")
-    /*public List<Category> searchResult(@RequestParam("keywords") String keywords) {
-        // 关键词为空时查询出所有书籍
-        System.out.println("正在搜索图书");
-        if ("".equals(keywords)) {
-            return bookService.list();
-        } else {
-            return bookService.Search(keywords);
-        }
-    }*/
-
-   // @GetMapping("/api/search")
     public Result searchResult(@RequestParam("keywords") String keywords) {
-        if ("".equals(keywords)) {
-            return ResultFactory.buildSuccessResult(bookService.list());
-        } else {
-            return ResultFactory.buildSuccessResult(bookService.Search(keywords));
-        }
+        return ResultFactory.buildSuccessResult(bookService.Search(keywords));
     }
 
     @CrossOrigin
@@ -157,8 +142,7 @@ public class BookController {
 
     @CrossOrigin
     @PostMapping(value = "/api/user/getbookdetail")
-    public Book getbookdetail(@RequestBody String bookid) {
-        Book book=bookDAO.findByBookid(Integer.valueOf(bookid));
-        return book;
+    public Category getbookdetail(@RequestBody String bookid) {
+        return bookService.getBookid(bookid);
     }
 }
