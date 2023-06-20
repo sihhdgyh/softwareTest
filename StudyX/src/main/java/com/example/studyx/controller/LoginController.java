@@ -9,6 +9,7 @@ import com.example.studyx.result.ResultFactory;
 import com.example.studyx.service.AdminService;
 import com.example.studyx.service.UserService;
 import com.example.studyx.utils.MyGlobal;
+import org.apache.ibatis.jdbc.Null;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -31,9 +32,10 @@ LoginController {
 
     @CrossOrigin
     @PostMapping("/api/getuserid")
-    public Integer getUserid(@RequestBody String a) throws Exception {
-
+    public Integer getUserid(String a) throws Exception {
         User user = loginRegister.findByMail(a);
+        if(user==null)
+            return 0;
         Integer id = user.getId();
         return id;
     }
@@ -90,7 +92,7 @@ LoginController {
             case 1:
                 return ResultFactory.buildSuccessResult("找回密码成功");
             case 2:
-                return ResultFactory.buildFailResult("该手机号未注册，请先注册");
+                return ResultFactory.buildFailResult("该邮箱未注册，请先注册");
         }
         return ResultFactory.buildFailResult("未知错误");
     }
@@ -125,7 +127,7 @@ LoginController {
         ;
         admin = loginRegister.getByAdminnameAndPassword(adminname, password);
         if (null == admin) {
-            return ResultFactory.buildFailResult("账号不存在");
+            return ResultFactory.buildFailResult("账号或密码错误");
         } else {
             MyGlobal.setUserid(admin.getId());
             session.setAttribute("admin", admin);

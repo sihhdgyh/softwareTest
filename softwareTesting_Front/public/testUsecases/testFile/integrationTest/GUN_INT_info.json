@@ -3,6 +3,42 @@
         "name":"GUN_INT_001",
         "url":"http://localhost:8443/api/login",
         "method":"POST",
-        "description":"login in"
+        "expected":"message"
+    },
+    {
+        "name":"GUN_INT_002",
+        "url":"http://localhost:8443/api/register",
+        "method":"POST",
+        "expected":"message"
+    },
+    {
+        "name":"GUN_INT_003",
+        "url":"http://localhost:8443/api/login/admin",
+        "method":"POST",
+        "expected":"message"
+    },
+    {
+        "name":"GUN_INT_004",
+        "url":"http://localhost:8443/api/findpassword",
+        "method":"POST",
+        "expected":"message"
+    },
+    {
+        "name":"GUN_INT_005",
+        "url":"http://localhost:8443/api/login",
+        "method":"POST",
+        "expected":"message"
+    },
+    {
+        "name":"GUN_INT_006",
+        "url":"http://localhost:8443/api/login",
+        "method":"POST",
+        "expected":"message"
+    },
+    {
+        "name":"GUN_INT_007",
+        "url":"http://localhost:8443/api/login",
+        "method":"POST",
+        "expected":"message"
     }
 ]

@@ -1,0 +1,4 @@
+item,no,mail,password,expected,actual,result
+IT_TD_006_001,1,3257138524@qq.com,123456,成功,,
+IT_TD_006_001,2,asygdyugiyugyuyu,123456,该邮箱未注册，请先注册,,
+IT_TD_006_001,3,3257138524@qq.com,,邮箱或密码或用户名不能为空,,

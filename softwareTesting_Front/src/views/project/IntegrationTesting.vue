@@ -47,7 +47,7 @@ const tabs = [
 }
 
 .left-part {
-  width: 150em;
+  width: 50em;
 }
 
 .right-part {

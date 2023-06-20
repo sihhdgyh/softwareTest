@@ -1,0 +1,4 @@
+item,no,adminname,password,verification code,expected,actual,result
+IT_TD_003_002,1,admin,admin,code,成功,,
+IT_TD_003_002,2,admin,wrongpassword,code,账号或密码错误,,
+IT_TD_003_002,3,not_admin,1234,code,账号不存在,,

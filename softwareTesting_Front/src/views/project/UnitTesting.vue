@@ -11,24 +11,16 @@ const tabs = [
     tab: '单元测试'
   },
   {
-    name: 'login',
-    tab: '登录模块',
-    testCase: '使用强健壮等价类设计测试用例。'
+    name: 'SMSCode',
+    tab: 'SMSCode类',
   },
   {
-    name: 'collect',
-    tab: '收藏模块',
-    testCase: '使用强一般等价类设计测试用例。'
+    name: 'Book',
+    tab: 'Book类',
   },
   {
-    name: 'deal-report',
-    tab: '受理举报模块',
-    testCase: '使用强一般等价类设计测试用例。'
-  },
-  {
-    name: 'confirm',
-    tab: '确认订单模块',
-    testCase: '使用强一般等价类设计测试用例。'
+    name: 'User',
+    tab: 'User类',
   }
 ]
 </script>

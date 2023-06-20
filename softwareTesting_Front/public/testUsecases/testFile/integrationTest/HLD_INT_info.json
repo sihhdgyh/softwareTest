@@ -1,0 +1,12 @@
+[
+    {
+        "name":"HLD_INT_001",
+        "url":"http://localhost:8443/api/HLD_001_INT_001",
+        "method":"GET"
+    },
+    {
+        "name":"HLD_INT_003",
+        "url":"http://localhost:8443/api/HLD_001_INT_003",
+        "method":"GET"
+    }
+]

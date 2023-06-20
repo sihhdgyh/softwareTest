@@ -1,3 +1,4 @@
 item,no,username,password,mail,expected,actual,result
-IT_TD_004_001,001,,1234,user@mail.com,用户名不能为空,,,
-IT_TD_004_001,001,user,,user@mail.com,密码不能为空,,,
+IT_TD_004_001,001,,1234,user@mail.com,邮箱或密码或用户名不能为空,,,
+IT_TD_004_001,002,user,,user@mail.com,邮箱或密码或用户名不能为空,,,
+IT_TD_004_001,003,user,1234,,邮箱或密码或用户名不能为空,,,

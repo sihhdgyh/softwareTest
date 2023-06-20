@@ -25,7 +25,7 @@ public class moduleTest {
 
     @Test
     @CrossOrigin
-    @GetMapping("/api/HLD_003_INT_001")
+    @GetMapping"/api/HLD_003_INT_001")
     public void HLD_003_INT_001(){
 
         //第一步：先获取csv文件的路径，通过BufferedReader类去读该路径中的文件
