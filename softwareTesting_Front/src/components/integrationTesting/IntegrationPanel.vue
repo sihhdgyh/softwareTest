@@ -155,8 +155,7 @@ function readJSONFile() {
         console.log("Failed to read JSON file:", error);
         throw error;
       });
-  }
-  else if (props.context == "HLD_INT") {
+  } else if (props.context == "HLD_INT") {
     return axios
       .get("/testUsecases/testFile/integrationTest/HLD_INT_info.json")
       .then((response) => response.data)
@@ -191,31 +190,52 @@ function sendRequest(i: number) {
           const key = keys[i];
           //console.log("Response:", i, response.data);
           //console.log(all_expected[key]);
-          data.value[i][Object.keys(data.value[i])[Object.keys(data.value[i]).length - 2]] = response.data[exp];
+          data.value[i][
+            Object.keys(data.value[i])[Object.keys(data.value[i]).length - 2]
+          ] = response.data[exp];
           if (response.data[exp] == all_expected[key].expected)
-            data.value[i][Object.keys(data.value[i])[Object.keys(data.value[i]).length - 1]] = "yes";
+            data.value[i][
+              Object.keys(data.value[i])[Object.keys(data.value[i]).length - 1]
+            ] = "yes";
           else
-            data.value[i][Object.keys(data.value[i])[Object.keys(data.value[i]).length - 1]] = "no";
+            data.value[i][
+              Object.keys(data.value[i])[Object.keys(data.value[i]).length - 1]
+            ] = "no";
         })
         .catch((error) => {
           console.error("Error:", error);
         });
     });
-  }
-  else if(props.context == "HLD_INT"){
+  } else if (props.context == "HLD_INT") {
     readJSONFile().then((content) => {
       const item = content[parseInt(value.value) - 1];
       const url = item.url;
       const method = item.method;
-      console.log(url);
       axios({
         url: url,
-        method: method
+        method: method,
       })
         .then()
         .catch((error) => {
           console.error("Error:", error);
         });
+      //读取result并显示
+      const selectedOption = options.find(
+        (option) => option.value == value.value
+      );
+      columns.value = [];
+      data.value = [];
+      if (selectedOption) {
+        let fileData = getLocalFile(selectedOption.label + "Result");
+        Papa.parse(fileData as string, {
+          complete: (res) => {
+            const parsedResult = res.data as string[][];
+            createColumns(parsedResult[0]);
+            parsedResult.splice(0, 1);
+            createRows(parsedResult);
+          },
+        });
+      }
     });
   }
 }
@@ -261,7 +281,7 @@ change_part();
 }
 .button {
   margin-top: 2em;
-  margin-left: 40em;
+  margin-left: 82em;
   margin-right: auto;
 }
 </style>

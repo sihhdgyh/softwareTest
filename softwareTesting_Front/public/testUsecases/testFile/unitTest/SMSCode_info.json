@@ -1,0 +1,12 @@
+[
+    {
+        "name":"getCodeToSMS",
+        "url":"http://localhost:8443/api/SMSCode/getCodeToSMSTest",
+        "method":"GET"
+    },
+    {
+        "name":"send",
+        "url":"http://localhost:8443/api/SMSCode/sendTest",
+        "method":"GET"
+    }
+]
