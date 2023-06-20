@@ -95,6 +95,7 @@ function handleChange(value: string) {
   data.value = [];
   const selectedOption = options.find((option) => option.value === value);
   if (selectedOption) {
+    
     let fileData = getLocalFile(selectedOption.label);
     Papa.parse(fileData as string, {
       complete: (res) => {

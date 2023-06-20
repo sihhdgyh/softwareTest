@@ -8,11 +8,8 @@ Fwio
 
 **前端**：Vue 3 + TypeScript + Naive UI
 
-**测试**：Vitest + Cypress
+**测试**：Vitest + Cypress + Junit
 
-Online Demo（**在线体验**）: [Libre Testing](https://libretesting.xyz)
-
-集成测试与系统测试使用的项目：[Flea Test](https://github.com/3fuyang/flea-test)
 
 ## 使用说明
 

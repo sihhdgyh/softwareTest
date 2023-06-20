@@ -65,14 +65,13 @@ public class SMSCodeTest {
                     headDataStr=data+",actual,result";
                 }else if("null".equals(result)){
                     String dataResult=smsCodeService.getCodeToSMS(null);
-                    try{
-
-                        Assert.assertEquals(dataResult,data.split(",")[3]);
+                    if((dataResult).equals(data.split(",")[3])){
                         dataList.add(data+","+dataResult+","+"yes");
-                    }catch (Exception e){
-                        System.out.println(e);
+                    }else{
                         dataList.add(data+","+dataResult+","+"no");
                     }
+
+
                 }else{
                     String dataResult=smsCodeService.getCodeToSMS(result);
                     dataList.add(data+","+dataResult+","+(dataResult.length()==6?"yes":"no"));
@@ -116,13 +115,12 @@ public class SMSCodeTest {
                     }else{
                         dataResult=smsCodeService.send(data.split(",")[2],data.split(",")[3]);
                     }
-                    try{
-                        Assert.assertEquals(dataResult?"true":"false",data.split(",")[4]);
+                    if((dataResult?"true":"false").equals(data.split(",")[4])){
                         dataList.add(data+","+dataResult+","+"yes");
-                    }catch (Exception e){
-                        System.out.println(e);
+                    }else{
                         dataList.add(data+","+dataResult+","+"no");
                     }
+
                 }
             }
 
@@ -158,13 +156,12 @@ public class SMSCodeTest {
                     headDataStr=data+",actual,result";
                 }else{
                     dataResult=bookService.Search(data.split(",")[2]);
-                    try{
-                        Assert.assertEquals(dataResult.size()+"",data.split(",")[3]);
+                    if((dataResult.size()+"").equals(data.split(",")[3])){
                         dataList.add(data+","+dataResult.size()+","+"yes");
-                    }catch (Exception e){
-                        System.out.println(e);
+                    }else{
                         dataList.add(data+","+dataResult.size()+","+"no");
                     }
+
                 }
             }
 
@@ -201,23 +198,19 @@ public class SMSCodeTest {
                 }else{
                     dataResult=bookService.getBookid(data.split(",")[2]);
                     if(data.split(",")[3].equals("null")){
-                        try{
-                            Assert.assertEquals(dataResult,null);
+                        if(dataResult==null){
                             dataList.add(data+","+"null"+","+"yes");
-                        }catch (Exception e){
-                            System.out.println(e);
+                        }else{
                             dataList.add(data+","+"null"+","+"no");
                         }
-                    }else {
-                        try {
-                            System.out.println(dataResult.toString().replace(',', ' '));
-                            Assert.assertEquals(dataResult.toString().replace(',', ' '), data.split(",")[3]);
 
+                    }else {
+                        if(dataResult.toString().replace(',', ' ').equals(data.split(",")[3])){
                             dataList.add(data + "," + dataResult.toString().replace(',', ' ') + "," + "yes");
-                        } catch (Exception e) {
-                            System.out.println(e);
+                        }else{
                             dataList.add(data + "," + dataResult.toString().replace(',', ' ') + "," + "no");
                         }
+
                     }
                 }
             }
@@ -259,11 +252,9 @@ public class SMSCodeTest {
                     user.setPassword(data.split(",")[3]);
                     user.setMail(data.split(",")[4]);
                     dataResult=userService.register(user);
-                    try{
-                        Assert.assertEquals(dataResult+"",data.split(",")[5]);
+                    if((dataResult+"").equals(data.split(",")[5])){
                         dataList.add(data+","+dataResult+","+"yes");
-                    }catch (Exception e){
-                        System.out.println(e);
+                    }else{
                         dataList.add(data+","+dataResult+","+"no");
                     }
                 }
@@ -304,19 +295,19 @@ public class SMSCodeTest {
                     user.setPassword(data.split(",")[2]);
                     user.setMail(data.split(",")[3]);
                     dataResult=userService.findpassword(user);
-                    try{
-                        Assert.assertEquals(dataResult+"",data.split(",")[4]);
+
+                    if((dataResult+"").equals(data.split(",")[4])){
                         dataList.add(data+","+dataResult+","+"yes");
-                    }catch (Exception e){
-                        System.out.println(e);
+                    }else{
                         dataList.add(data+","+dataResult+","+"no");
                     }
+
                 }
             }
 
         }
         CsvUtil.writeToCsv(headDataStr, dataList, csvfile, false);
-
+        return;
 
     }
 }

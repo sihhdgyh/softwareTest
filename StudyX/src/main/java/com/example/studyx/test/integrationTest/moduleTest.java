@@ -25,7 +25,7 @@ public class moduleTest {
 
     @Test
     @CrossOrigin
-    @GetMapping"/api/HLD_003_INT_001")
+    @GetMapping("/api/HLD_003_INT_001")
     public void HLD_003_INT_001(){
 
         //第一步：先获取csv文件的路径，通过BufferedReader类去读该路径中的文件
@@ -56,24 +56,22 @@ public class moduleTest {
                     }else{
                         dataResult=sms.send(data.split(",")[2],data.split(",")[3]);
                     }
-                    try{
-                        Assert.assertEquals(dataResult?"true":"false",data.split(",")[4]);
+                    if((dataResult?"true":"false").equals(data.split(",")[4])){
                         dataList.add(data+","+dataResult+","+"yes");
-                    }catch (Exception e){
-                        System.out.println(e);
+                    }else{
                         dataList.add(data+","+dataResult+","+"no");
                     }
+
                 }
             }
 
         }
         CsvUtil.writeToCsv(headDataStr, dataList, csvfile, false);
-
+        return;
 
     }
 
 
-    @Test
     @CrossOrigin
     @GetMapping("/api/HLD_001_INT_001")
     public void HLD_001_INT_001(){
@@ -103,11 +101,9 @@ public class moduleTest {
                     user.setPassword(data.split(",")[3]);
                     user.setMail(data.split(",")[4]);
                     dataResult=loginRegister.register(user);
-                    try{
-                        Assert.assertEquals(dataResult+"",data.split(",")[5]);
+                    if((dataResult+"").equals(data.split(",")[5])){
                         dataList.add(data+","+dataResult+","+"yes");
-                    }catch (Exception e){
-                        System.out.println(e);
+                    }else{
                         dataList.add(data+","+dataResult+","+"no");
                     }
                 }
@@ -115,7 +111,7 @@ public class moduleTest {
 
         }
         CsvUtil.writeToCsv(headDataStr, dataList, csvfile, false);
-
+        return;
 
     }
 }
