@@ -127,7 +127,7 @@ import {
 import { LabelLayout, UniversalTransition } from 'echarts/features'
 import { CanvasRenderer } from 'echarts/renderers'
 
-const emit = defineEmits(['triangleJudge'])
+const emit = defineEmits(['triangleJudge','calendarProblem'])
 const props = defineProps<{
   context: string,  // 测试上下文
   options: any[],  // 支持的测试用例类型
@@ -229,8 +229,9 @@ const usecaseType = ref(null)
 
 function handleVersionSelect(value: string) {
   //alert(value)
-  emit('triangleJudge',{triangleJudge:value})
+  
   if(props.context=='triangleJudge'){
+    emit('triangleJudge',{triangleJudge:value})
     if(value=='0.0.0'){
       code.value=`function triangleJudge(a: number, b: number, c: number): string {
     if (a <= 0 || b <= 0 || c <= 0 || a > 200 || b > 200 || c > 200) {
@@ -277,6 +278,7 @@ function handleVersionSelect(value: string) {
       code.value=``
     }
   }else if(props.context=='calendarProblem'){
+    emit('calendarProblem',{calendarProblem:value})
     if(value=='0.0.0'){
       code.value=`function calendarProblem(year: number, month: number, day: number): string {
     if (year < 1900 || year > 2100) {
@@ -381,6 +383,181 @@ function handleVersionSelect(value: string) {
         result[0]++
     }
     return result[0] + "/" + result[1] + "/" + result[2]
+}`
+    }else{
+      code.value=``
+    }
+  }else if(props.context=='telecomSystem'){
+    if(value=='0.0.0'){
+      code.value=`function telecomSystem(callingTime: number, count: number): string {
+    if (callingTime < 0 || callingTime > 31 * 24 * 60) {
+        return "通话时长数值越界"
+    }
+    if (count < 0 || count > 11) {
+        return "未按时缴费次数越界"
+    }
+
+    let maxNum: number[] = [1, 2, 3, 3, 6]
+    let level: number = getLevel(callingTime)
+    if (count <= maxNum[level]) {
+        return String((25 + 0.15 * callingTime * (1 - (level + 1) * 0.005)))
+    } else {
+        return String((25 + 0.15 * callingTime))
+    }
+}
+
+//获取折扣档位
+function getLevel(time: number): number {
+    if (time > 0 && time <= 60)
+        return 1
+    else if (time > 60 && time <= 120)
+        return 2
+    else if (time > 120 && time <= 180)
+        return 3
+    else if (time > 180 && time <= 300)
+        return 4
+    else
+        return 5
+}`
+    }else if(value=='0.1.0'){
+      code.value=`function telecomSystem(callingTime: number, count: number): string {
+    if (callingTime < 0 || callingTime > 31 * 24 * 60) {
+        return "通话时长数值越界"
+    }
+    if (count < 0 || count > 11) {
+        return "未按时缴费次数越界"
+    }
+
+    let maxNum: number[] = [1, 2, 3, 3, 6]
+    let level: number = getLevel(callingTime)
+    if (count <= maxNum[level - 1]) {
+        return String((25 + 0.15 * callingTime * (1 - (level + 1) * 0.005)))
+    } else {
+        return String((25 + 0.15 * callingTime))
+    }
+}
+
+//获取折扣档位
+function getLevel(time: number): number {
+    if (time > 0 && time <= 60)
+        return 1
+    else if (time > 60 && time <= 120)
+        return 2
+    else if (time > 120 && time <= 180)
+        return 3
+    else if (time > 180 && time <= 300)
+        return 4
+    else
+        return 5
+}
+`
+    }else if(value=='0.2.0'){
+      code.value=`function telecomSystem(callingTime: number, count: number): string {
+    if (callingTime < 0 || callingTime > 31 * 24 * 60) {
+        return "通话时长数值越界"
+    }
+    if (count < 0 || count > 11) {
+        return "未按时缴费次数越界"
+    }
+
+    let maxNum: number[] = [1, 2, 3, 3, 6]
+    let level: number = getLevel(callingTime)
+    if (count <= maxNum[level - 1]) {
+        return String(Math.round((25 + 0.15 * callingTime * (1 - (level + 1) * 0.005)) * 100) / 100)
+    } else {
+        return String(Math.round((25 + 0.15 * callingTime) * 100) / 100)
+    }
+}
+
+//获取折扣档位
+function getLevel(time: number): number {
+    if (time > 0 && time <= 60)
+        return 1
+    else if (time > 60 && time <= 120)
+        return 2
+    else if (time > 120 && time <= 180)
+        return 3
+    else if (time > 180 && time <= 300)
+        return 4
+    else
+        return 5
+}`
+    }else{
+      code.value=``
+    }
+  }else if(props.context=='computerSelling'){
+    if(value=='0.0.0'){
+      code.value=`function computerSelling(host: number, monitor: number, peripheral: number): string {
+    if (host <= 0 || monitor <= 0 || peripheral <= 0) {
+        return "数据非法，各部件销售数量不能小于1"
+    }
+    if (host > 70) {
+        return "数据非法，主机销售数量不能超过70"
+    }
+    if (monitor > 80) {
+        return "数据非法，显示器销售数量不能超过80"
+    }
+    if (peripheral > 90) {
+        return "数据非法，外设销售数量不能超过90"
+    }
+
+    let totalSales: number = host * 25 + monitor * 30 + peripheral * 45;
+    if (totalSales <= 1000) {
+        return String(totalSales * 0.1)
+    } else if (totalSales <= 1800) {
+        return String(totalSales * 0.15)
+    } else {
+        return String(totalSales * 0.2)
+    }
+}`
+    }else if(value=='0.1.0'){
+      code.value=`function computerSelling(host: number, monitor: number, peripheral: number): string {
+    if (host == -1) {
+        return "系统开始统计月度销售额"
+    }
+    if (host <= 0 || monitor <= 0 || peripheral <= 0) {
+        return "数据非法，各部件销售数量不能小于1"
+    }
+    if (host > 70) {
+        return "数据非法，主机销售数量不能超过70"
+    }
+    if (monitor > 80) {
+        return "数据非法，显示器销售数量不能超过80"
+    }
+    if (peripheral > 90) {
+        return "数据非法，外设销售数量不能超过90"
+    }
+
+    let totalSales: number = host * 25 + monitor * 30 + peripheral * 45;
+    if (totalSales <= 1000) {
+        return String(totalSales * 0.1)
+    } else if (totalSales <= 1800) {
+        return String(totalSales * 0.15)
+    } else {
+        return String(totalSales * 0.2)
+    }
+}
+`
+    }else{
+      code.value=``
+    }
+  }else if(props.context=='commissionCaculate'){
+    if(value=='0.0.0'){
+      code.value=`function commissionCaculate(annualSales: number, leaveDays: number, cashArrival: number): number {
+   if(annualSales>200&&leaveDays<=10&&leaveDays>=0&&cashArrival<=1&&cashArrival>=0){
+        if(cashArrival>=0.6)
+            return annualSales/7;
+        else {
+            return 0;
+        }
+   }else if(annualSales>=0&&leaveDays>=0&&cashArrival<=1&&cashArrival>=0){
+    if(cashArrival<=0.85){
+        return annualSales/6;
+    }else{
+        return annualSales/5;
+    }
+   }
+   return 0;
 }`
     }else{
       code.value=``

@@ -57,12 +57,20 @@ const menuOptions: MenuOption[] = [
         }, { default: () => "电信收费系统" }),
         key: 'telecom-system'
       },
+      {
+        label: () => h(RouterLink, {
+          to: {
+            path: "/commission-caculate"
+          }
+        }, { default: () => "佣金计算" }),
+        key: 'commission-caculate'
+      },
     ]
   },
   {
     label: '期末项目',
     key: 'final-project',
-    icon: renderIcon(EaselSharp),
+    icon: renderIcon(MenuOutline),
     children: [
       {
         label: () => h(RouterLink, {

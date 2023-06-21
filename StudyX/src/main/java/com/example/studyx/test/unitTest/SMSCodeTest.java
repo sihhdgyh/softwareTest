@@ -262,8 +262,6 @@ public class SMSCodeTest {
 
         }
         CsvUtil.writeToCsv(headDataStr, dataList, csvfile, false);
-
-
     }
 
     @Test
@@ -311,3 +309,4 @@ public class SMSCodeTest {
 
     }
 }
+

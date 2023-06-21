@@ -29,6 +29,11 @@ const router = createRouter({
       component: () => import('../views/exercise/TelecomSystem.vue')
     },
     {
+      path: '/commission-caculate',
+      name: 'commission-caculate',
+      component: () => import('../views/exercise/CommissionCaculate.vue')
+    },
+    {
       path: '/unit-testing',
       name: 'unit-testing',
       component: () => import('../views/project/UnitTesting.vue')

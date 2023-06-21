@@ -1,6 +1,6 @@
 <template>
   <test-panel :context="context" :options="options" :code="code" :versions="versions" :ec-option="ecOption"
-    :iteration="iteration">
+    :iteration="iteration" @calendarProblem="change">
     <template #header> Question 02. 万年历问题 </template>
     <template #sub-title> 算法思想 </template>
     <template #detail>
@@ -17,7 +17,23 @@
 import * as echarts from 'echarts/core'
 import TestPanel from "../../components/TestPanel.vue"
 import type { ECOption } from '@/interface'
+import {ref,computed,onUpdated} from 'vue'
+interface ICalendarProblem {
+  calendarProblem : string
+}
 
+const version=ref(true)
+const change = (val:ICalendarProblem) => {
+    //alert(val.triangleJudge); // 获取子组件的值  打印 user2
+    if(val.calendarProblem=='0.0.0'){
+      version.value=true
+    }
+    else{
+      version.value=false
+    }
+    // version.value="111"
+    // alert(version.value)
+}
 // 上下文
 const context = "calendarProblem"
 
