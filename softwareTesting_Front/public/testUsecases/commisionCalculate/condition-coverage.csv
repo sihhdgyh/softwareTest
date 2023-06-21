@@ -1,0 +1,5 @@
+TestCaseID,annualSales,leaveDays,cashArrival,ExpectedOutput,ActualOutput,Correctness,TesterName
+1,210,8,0.7,30,,,
+2,210,8,0.5,0,,,
+3,180,8,0.7,30,,,
+4,180,8,0.9,36,,,

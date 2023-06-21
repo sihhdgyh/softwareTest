@@ -2,20 +2,20 @@ import type { Row } from '../interface'
 
 // 接收一组参数，返回字符串结果
 function commissionCaculate(annualSales: number, leaveDays: number, cashArrival: number): number {
-   if(annualSales>200&&leaveDays<=10&&leaveDays>=0&&cashArrival<=1&&cashArrival>=0){
-        if(cashArrival>=0.6)
-            return annualSales/7;
+    if (annualSales > 200 && leaveDays <= 10 && leaveDays >= 0 && cashArrival <= 1 && cashArrival >= 0) {
+        if (cashArrival >= 0.6)
+            return annualSales / 7;
         else {
             return 0;
         }
-   }else if(annualSales>=0&&leaveDays>=0&&cashArrival<=1&&cashArrival>=0){
-    if(cashArrival<=0.85){
-        return annualSales/6;
-    }else{
-        return annualSales/5;
+    } else if (annualSales >= 0 && leaveDays >= 0 && cashArrival <= 1 && cashArrival >= 0) {
+        if (cashArrival <= 0.85) {
+            return annualSales / 6;
+        } else {
+            return annualSales / 5;
+        }
     }
-   }
-   return 0;
+    return 0;
 }
 
 // 根据.csv文件的表头字段提取对应的参数，返回参数数组
