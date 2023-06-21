@@ -11,7 +11,7 @@ import IconVitestVue from '../icons/IconVitest.vue'
       单元测试（Unit Testing），是指对软件中的最小可测试单元进行检查和验证。
     </n-blockquote>
     <n-text tag="div">
-      单元测试通常适用于独立的业务逻辑、组件、类、模块或函数，不涉及 UI 渲染、网络请求或其他环境问题。
+      选了3个类——SMSCode、Book、User类，一共是6个函数
     </n-text>
     <br />
     <n-text tag="div">
@@ -19,24 +19,13 @@ import IconVitestVue from '../icons/IconVitest.vue'
     </n-text>
     <n-h2>测试工具</n-h2>
     <n-text tag="div">
-      本项目使用单元测试框架
+      本项目使用单元测试工具
       <n-a href="https://vitest.dev/" target="_blank">
-        <icon-vitest-vue class="vitest-logo" />Vitest
+        Junit
       </n-a>
-      作为测试工具，因为由 create-vue 创建的官方项目配置是基于 Vite 的，而 Vitest 可以利用同一套 Vite 配置和转换管道。
+      将测试用例写在文件中，通过读写csv文件的方式实现
     </n-text>
     <br />
-    <n-text tag="div">
-      同时作为新一代测试框架，Vitest 还具备以下特点：
-      <n-ul>
-        <n-li>智能、快速的监察模式，支持测试运行时的热模块更新</n-li>
-        <n-li>开箱即用的 TypeScript / JSX 支持</n-li>
-        <n-li>首选 ESM 模块系统，支持顶级 await</n-li>
-        <n-li>套件与测试的筛选、延时和并发</n-li>
-        <n-li>内置 Tinyspy 提供 mocking</n-li>
-        <n-li>支持类似 Rust 的源码行内测试 ……</n-li>
-      </n-ul>
-    </n-text>
   </n-card>
 </template>
 

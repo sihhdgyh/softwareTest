@@ -615,7 +615,7 @@ const executeTesting = (dataContent: Row[]) => {
     if (row.ActualOutput == null) {
       nullAnsNum++
     }
-    row.TesterName = `AAA`
+    row.TesterName = `e`
     let myTime = new Date()
     row.Time = myTime.toLocaleString()
     if (row.ActualOutput === row.ExpectedOutput) {

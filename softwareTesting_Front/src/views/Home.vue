@@ -1,6 +1,9 @@
 <template>
   <n-card class="home-box" content-style="padding-bottom: 0;" footer-style="margin-bottom: 0;padding-bottom: 0;">
-    <n-space justify="center">
+    <p style="font-size: large;">图书漂流测试项目</p>
+    <img src="/public/home.png" />
+    
+    <!-- <n-space justify="center">
       <n-icon class="css3-logo" size="9em" color="#5FBC21">
         <LogoCss3 />
       </n-icon>
@@ -42,7 +45,7 @@
         </n-p>
         <a class="icp" href="http://beian.miit.gov.cn/" target="_blank">蜀ICP备2022009593号-1</a>
       </section>
-    </template>
+    </template> -->
   </n-card>
 </template>
 
