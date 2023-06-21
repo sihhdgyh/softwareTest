@@ -42,9 +42,6 @@ const tabs = [
         </n-tab-pane>
       </n-tabs>
     </div>
-    <div class="right-part">
-      <div id="stackblitz" />
-    </div>
   </div>
 </template>
 
@@ -55,12 +52,4 @@ const tabs = [
   font-size: 1rem;
 }
 
-.left-part {
-  width: 36em;
-}
-
-.right-part {
-  box-sizing: border-box;
-  width: 45.6em;
-}
 </style>

@@ -1,0 +1,12 @@
+[
+    {
+        "name":"getCodeToSMS",
+        "url":"http://localhost:8443/api/Book/searchTest",
+        "method":"GET"
+    },
+    {
+        "name":"send",
+        "url":"http://localhost:8443/api/Book/getBookidTest",
+        "method":"GET"
+    }
+]
